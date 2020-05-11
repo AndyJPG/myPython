@@ -140,3 +140,62 @@ for x in range(2, 20, 2):
     print(x, "incremental 2")
 else:
     print("last statement")
+
+
+def unknown_para(*kids):
+    print("The yungest child is " + kids[2])
+
+
+unknown_para("Emil", "Tobias", "Linus")
+
+
+def unknown_keyword(**kid):
+    print("His last name is " + kid.get("lname"))
+
+
+unknown_keyword(fname="Tobias", lname="Refsnes")
+
+
+def tri_recursion(k):
+    if k > 0:
+        result = k + tri_recursion(k - 1)
+        print(result)
+    else:
+        result = 0
+    return result
+
+
+print("\n\nRecursion Example Results")
+tri_recursion(6)
+
+
+def fibonacci_no(i):
+    numbers = [0, 1]
+    while len(numbers) < i:
+        numbers.append(numbers[-1] + numbers[-2])
+    print(numbers)
+
+
+fibonacci_no(7)
+
+
+def fibonacci_recurse(i, p=0, c=1):
+    if i > 0:
+        print(p)
+        fibonacci_recurse(i-1, c, p+c)
+
+
+fibonacci_recurse(10)
+
+x = lambda a : a + 10
+print(x(5))
+
+
+def myfunc(n):
+    return lambda a : a * n
+
+
+mydoubler = myfunc(2)
+mytripler = myfunc(3)
+print(mydoubler(11))
+print(mytripler(11))
