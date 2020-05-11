@@ -66,3 +66,77 @@ aset = {"apple", "orange"}
 aset.add("grape")
 print(aset)
 
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3, "a"}
+
+set1.update(set2)
+print(set1)
+
+thisdict = {
+    "brand": "Ford",
+    "model": "Mustang",
+    "age": 5
+}
+
+for x in thisdict:
+    print(x + " : " + str(thisdict[x]))
+
+for x in thisdict.values():
+    print(x)
+
+for x, y in thisdict.items():
+    print(x, y)
+
+if "brand" in thisdict:
+    print("yes")
+
+thisdict.pop("age")
+print(thisdict)
+
+a = 33
+b = 44
+
+if b > a:
+    print("b > a")
+elif b == a:
+    print("b = a")
+else:
+    print("b < a")
+
+if bool(a):
+    print("a is true")
+
+if b >= a:
+    pass
+
+i = 0
+while i < 9:
+    i += 1
+
+    if i >=6:
+        print("i am dead")
+        break
+
+    if i == 3:
+        continue
+
+    print(i)
+
+while i < 15:
+    if i == 6:
+        print("i am back")
+    print(i)
+    i += 1
+else:
+    print("i is no longer less than 6")
+
+for x in "apple":
+    print(x)
+
+for x in range(6):
+    print(x)
+
+for x in range(2, 20, 2):
+    print(x, "incremental 2")
+else:
+    print("last statement")
