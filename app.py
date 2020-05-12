@@ -144,6 +144,7 @@ print(customer.get('gender'))
 print(customer.get('name'))
 print(customer.get('birthdate', '1993'))
 
+
 def convertNumber(inputNumbers):
     digits = [
         '🤓',
@@ -157,11 +158,11 @@ def convertNumber(inputNumbers):
         '🙄'
     ]
 
-    number = ''
+    my_number = ''
     for i in inputNumbers:
-        number += f'{digits[int(i) - 1]} '
+        my_number += f'{digits[int(i) - 1]} '
     else:
-        return number
+        return my_number
 
 
 # inputNumbers = input('Numbers: ')
@@ -169,18 +170,18 @@ inputNumbers = '2321'
 print(f'Your number is {convertNumber(inputNumbers)}')
 
 
-def greet_user(name, age='12'):
-    print(f'name: {name}, age: {age}')
+def greet_user(my_name, age='12'):
+    print(f'name: {my_name}, age: {age}')
 
 
-greet_user(name="John", age="Wick")
+greet_user(my_name="John", age="Wick")
 greet_user("Smith")
 
 
 def error_detect(prop):
     try:
-        age = int(prop)
-        print(age)
+        my_age = int(prop)
+        print(my_age)
     except ZeroDivisionError:
         print('Age no 0')
     except ValueError:
@@ -188,4 +189,89 @@ def error_detect(prop):
 
 
 error_detect("asd")
+
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def move(self):
+        print('move')
+
+    def draw(self):
+        print('draw')
+
+
+point1 = Point(10, 9)
+point1.x = 10
+print(point1.x)
+point1.draw()
+
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def talk(self):
+        print(f'Hello I am {self.name}')
+
+
+class Man(Person):
+    def run(self):
+        print('I am running')
+
+
+a_man = Man('John')
+a_man.talk()
+
+import converters
+# from converters import kg_to_lbs
+# kg_to_lbs(100)
+
+print(converters.kg_to_lbs(70))
+
+from utils import find_max
+
+numbers = [10, 3, 4, 6, 2]
+maxNumber = find_max(numbers)
+print(maxNumber)
+print(max(numbers))
+
+# package
+# import ecommerce.shipping
+from ecommerce.shipping import calc_shipping
+from ecommerce import shipping
+
+calc_shipping()
+shipping.calc_shipping()
+
+members = ["Andy", "Li", "Claire", "Helo"]
+print(random.choice(members))
+
+
+class Dice:
+    def roll(self):
+        print(f'({random.randint(1, 6)}, {random.randint(1, 6)})')
+
+
+dice = Dice()
+dice.roll()
+
+from pathlib import Path
+
+path = Path("ecommerce")
+print(path)
+
+path1 = Path("emails")
+# print(path1.mkdir())
+# print(path1.rmdir())
+
+path2 = Path()
+print(path2.glob('*.py'))
+for file in path2.glob('*.py'):
+    print(file)
+
+for file in path2.glob('*'):
+    print(file)
 
