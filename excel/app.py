@@ -48,3 +48,7 @@ def process_workbook(filename):
     work_book.save(f'{saved_filename[0]}2.{saved_filename[-1]}')
 
 process_workbook(xl_file)
+
+print(Path('.').iterdir())
+for file in Path('.').iterdir():
+    print(file)
