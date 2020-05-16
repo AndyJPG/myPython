@@ -187,6 +187,8 @@ def fibonacci_recurse(i, p=0, c=1):
 
 fibonacci_recurse(10)
 
+# lambda
+
 x = lambda a : a + 10
 print(x(5))
 
@@ -199,3 +201,60 @@ mydoubler = myfunc(2)
 mytripler = myfunc(3)
 print(mydoubler(11))
 print(mytripler(11))
+
+# class
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+p1 = Person('John')
+del p1
+
+class Student(Person):
+    def __init__(self, name, year):
+        # Person.__init__(self, name)
+        # both are ok to inherit from its parent
+        super().__init__(name)
+        self.graduationyear = year
+
+    def welcome(self):
+        print('Welcome ', self.name, 'to the class of ', self.graduationyear)
+
+s1 = Student('John', 2019)
+s1.welcome()
+
+# iterator
+
+mytuple = ('apple', 'banana', 'cherry')
+myit = iter(mytuple)
+
+for index in range(len(mytuple)):
+    print(next(myit))
+
+# simple iterator sample
+
+class MyNumber:
+    def __iter__(self):
+        self.a = 1
+        return self
+    
+    def __next__(self):
+        if self.a <= 20:
+            x = self.a
+            self.a += 1
+            return x
+        else:
+            raise StopIteration
+    
+myClass = MyNumber()
+myiter = iter(myClass)
+
+print(next(myiter))
+print(next(myiter))
+
+for x in myiter:
+    print(x)
+
+
+
+
