@@ -1,6 +1,13 @@
+import platform
+import datetime
+import math
+import json
+import re
+import camelcase
+
 print("Hello, World!")
 
-#This is a comment.
+# This is a comment.
 
 """
 more line
@@ -10,11 +17,13 @@ comment
 _myText = "Fives is greater than two!"
 x, y, z = "apple", "grape", "orange"
 
+
 def myFunc():
     # global x
     x = "hello"
     if 5 > 2:
         print(_myText + " " + x)
+
 
 myFunc()
 
@@ -26,9 +35,9 @@ print(type(y))
 x = 1.34e100
 print(x)
 
-x = 3+5j
-y = 5+2j
-print(x+y)
+x = 3 + 5j
+y = 5 + 2j
+print(x + y)
 
 import random
 
@@ -47,7 +56,7 @@ print(txt1.format(x, y))
 
 print(isinstance(x, complex))
 
-alist = [1,2,4,5,3]
+alist = [1, 2, 4, 5, 3]
 print(alist)
 
 for x in alist:
@@ -56,7 +65,7 @@ for x in alist:
 alist.append(9)
 alist.insert(2, 10)
 
-#copy list
+# copy list
 copylist = alist.copy()
 copylist.sort()
 print(copylist, alist)
@@ -113,7 +122,7 @@ i = 0
 while i < 9:
     i += 1
 
-    if i >=6:
+    if i >= 6:
         print("i am dead")
         break
 
@@ -182,19 +191,19 @@ fibonacci_no(7)
 def fibonacci_recurse(i, p=0, c=1):
     if i > 0:
         print(p)
-        fibonacci_recurse(i-1, c, p+c)
+        fibonacci_recurse(i - 1, c, p + c)
 
 
 fibonacci_recurse(10)
 
 # lambda
 
-x = lambda a : a + 10
+x = lambda a: a + 10
 print(x(5))
 
 
 def myfunc(n):
-    return lambda a : a * n
+    return lambda a: a * n
 
 
 mydoubler = myfunc(2)
@@ -202,13 +211,16 @@ mytripler = myfunc(3)
 print(mydoubler(11))
 print(mytripler(11))
 
+
 # class
 class Person:
     def __init__(self, name):
         self.name = name
 
+
 p1 = Person('John')
 del p1
+
 
 class Student(Person):
     def __init__(self, name, year):
@@ -219,6 +231,7 @@ class Student(Person):
 
     def welcome(self):
         print('Welcome ', self.name, 'to the class of ', self.graduationyear)
+
 
 s1 = Student('John', 2019)
 s1.welcome()
@@ -231,13 +244,14 @@ myit = iter(mytuple)
 for index in range(len(mytuple)):
     print(next(myit))
 
+
 # simple iterator sample
 
 class MyNumber:
     def __iter__(self):
         self.a = 1
         return self
-    
+
     def __next__(self):
         if self.a <= 20:
             x = self.a
@@ -245,7 +259,8 @@ class MyNumber:
             return x
         else:
             raise StopIteration
-    
+
+
 myClass = MyNumber()
 myiter = iter(myClass)
 
@@ -255,6 +270,91 @@ print(next(myiter))
 for x in myiter:
     print(x)
 
+# Python scope
 
+x = 200
+
+
+def print_global():
+    print(x)
+
+
+print_global()
+
+# with imported modules
+
+
+x = platform.system()
+d = dir(platform)
+print(x)
+print(d)
+
+date = datetime.datetime.now()
+date_object = datetime.datetime(2020, 5, 17)
+print(date)
+print(date.year)
+print(date_object)
+print(date.strftime("%A, %d, %b, %Y"))
+
+print(math.sqrt(64))
+print(math.ceil(1.4))
+print(math.floor(1.4))
+print(round(1.5))
+
+sample_json = '{ "name" : "John", "age" : 30, "city" : "New York"}'
+sample_dict = {
+    "name": "John",
+    "age": 30,
+    "married": True,
+    "divorced": False,
+    "children": ("Ann", "Billy"),
+    "pets": None,
+    "cars": [
+        {"model": "BMW 230", "mpg": 27.5},
+        {"model": "Ford Edge", "mpg": 24.1}
+    ]
+}
+parse_json = json.loads(sample_json)
+
+print(parse_json.get('name'))
+print(json.dumps(parse_json))
+print(json.dumps(["apple", "orange"]))
+
+print(json.dumps(sample_dict, indent=4, separators=(". ", " = "), sort_keys=True))
+
+txt = 'The rain in Spain'
+search_x = re.search("^The.*Spain$", txt)
+print(search_x)
+
+print(camelcase.CamelCase().hump(txt))
+
+# try and except
+
+try:
+    print(not_defined)
+except NameError:
+    print('Variable is not defined')
+except:
+    print("An exception occurred")
+finally:
+    print("The 'try except' is finished")
+
+try:
+    f = open('converters.py')
+    f.write('print("Hello there")')
+except FileNotFoundError:
+    print('can\'t find file')
+except:
+    print("Something went wrong with writing")
+finally:
+    f.close()
+
+# if not type(x) is int:
+#     raise TypeError('Variable is not integer')
+
+# string formatting
+
+txt = "The price is {1:.2f} dollars {0} + {0}, named {model}"
+print(txt.format(49, 90, model="Mustang"))
 
 
